@@ -1,10 +1,23 @@
 import { useState } from 'react'
+import {BrowserRouter,Routes,Route} from "react-router-dom"
+import Home from './pages/Home'
+import About from './pages/About'
+import Signin from './pages/Signin'
+import SignUp from './pages/SignUp'
+import Dashboard from './pages/Dashboard'
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
-    <h1 className='bg-gray-500'>First Mern Project</h1>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home/>} />
+        <Route path='/about' element={<About/>} />
+        <Route path='/sign-in' element={<Signin/>} />
+        <Route path='/sign-up' element={<SignUp/>} />
+        <Route path='/dashboard' element={<Dashboard/>} /> 
+      </Routes>
+    </BrowserRouter>
   )
 }
 

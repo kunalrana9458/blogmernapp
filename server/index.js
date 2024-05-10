@@ -1,6 +1,6 @@
 import express from 'express'
 import dbConnect from './config/database.js'
-
+import userRoutes from './route/user.route.js'
 
 
 const app = express();
@@ -12,3 +12,5 @@ app.listen(port,() => {
 })
 
 dbConnect();
+
+app.use('/api/user',userRoutes);

@@ -97,7 +97,7 @@ export default function SignUp() {
               loading ? (<>
               <Spinner size='sm' />
               <span>Loading...</span> 
-              </>) : ('Sign-in')
+              </>) : ('Sign Up')
             }
           </Button>
         </form>

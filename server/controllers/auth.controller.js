@@ -1,6 +1,10 @@
 import User from '../models/User.models.js'
 import bcrpytjs from 'bcryptjs';
 import { errorHandler } from '../utils/error.js';
+import jwt from 'jsonwebtoken'
+import dotenv from "dotenv"
+
+dotenv.config();
 
 export const signup = async (req, res,next) => {
   const { username, email, password } = req.body;
@@ -30,3 +34,36 @@ export const signup = async (req, res,next) => {
     next(error);
  }
 };
+
+export const signin = async (req,res,next) => {
+  const {email,password} = req.body;
+
+  if(!email || !password || email === '' || password === ''){
+    return next((errorHandler(400,'All Fields Are required')));
+  }
+  
+  try {
+    const validUser = await User.findOne({email});
+    if(!validUser) {
+      return next(errorHandler(404,'user Not Found'));
+    }
+    const validPassword = bcrpytjs.compareSync(password,validUser.password);
+    if(!validPassword){
+      return next(errorHandler(400,'Invalid Password'));
+    }
+
+    const payload = {
+      email:validUser.email,
+      id:validUser._id,
+    }
+    
+    const token = jwt.sign(payload,process.env.JWT_SECRET);
+    const {password:pass,...rest} = validUser._doc;
+      
+    res.status(200).cookie('access_token',token,{
+      httpOnly:true
+    }).json(rest)
+  } catch (error) {
+    return error.message; 
+  }
+}

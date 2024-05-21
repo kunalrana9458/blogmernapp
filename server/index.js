@@ -2,11 +2,12 @@ import express from 'express'
 import dbConnect from './config/database.js'
 import userRoutes from './route/user.route.js'
 import authRoutes from './route/auth.route.js'
+import cookieParser from 'cookie-parser'
 
 const app = express();
 
 app.use(express.json());
-
+app.use(cookieParser());
 
 const port=3000;
 

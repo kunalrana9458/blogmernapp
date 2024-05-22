@@ -10,7 +10,7 @@ export const updateUser = async(req,res,next) => {
     if(req.user.id !== req.params.userId){
         return next(errorHandler(403,'You are not Allowed to update this user'));
     }
-    if(req.body.password){
+    if(req.body.password <= 6){
         return next(errorHandler(400,'Password must be at least 6 characters'))
     }
     if(req.body.username){

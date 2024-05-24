@@ -5,6 +5,8 @@ import { useLocation } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import {useSelector} from 'react-redux'
 
+
+
 export default function DashProfile() {
   const {currentUser} = useSelector((state) => state.user)
   const location = useLocation();
@@ -34,9 +36,10 @@ export default function DashProfile() {
             currentUser.isAdmin && (
               <Link to='/dashboard?tab=posts'>
               <Sidebar.Item
-              active={tab === 'post'}
+              active={tab === 'posts'}
               icon={HiDocumentText}
-              as='div'> Posts
+              as='div'>
+               Posts
               </Sidebar.Item>
             </Link>
             )

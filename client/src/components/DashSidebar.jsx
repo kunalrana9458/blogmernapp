@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import {Sidebar} from 'flowbite-react'
-import {HiUser,HiArrowRight} from 'react-icons/hi'
+import {HiUser,HiArrowRight, HiDocumentText} from 'react-icons/hi'
 import { useLocation } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+import {useSelector} from 'react-redux'
 
 export default function DashProfile() {
+  const {currentUser} = useSelector((state) => state.user)
   const location = useLocation();
   const [tab,setTab] = useState('')
   useEffect(() => {
@@ -22,12 +24,23 @@ export default function DashProfile() {
                 <Sidebar.Item 
                 active={tab === 'profile'} 
                 icon={HiUser} 
-                label={"User"}
+                label={currentUser.isAdmin ? 'Admin' : 'User'}
                 labelColor='dark'
                 as='div' >
                     Profile
                 </Sidebar.Item>
             </Link>
+           {
+            currentUser.isAdmin && (
+              <Link to='/dashboard?tab=posts'>
+              <Sidebar.Item
+              active={tab === 'post'}
+              icon={HiDocumentText}
+              as='div'> Posts
+              </Sidebar.Item>
+            </Link>
+            )
+           }
                 <Sidebar.Item  icon={HiArrowRight}   
                 className='cursor-pointer' >
                     Sign Out

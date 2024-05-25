@@ -98,6 +98,9 @@ export const google = async(req,res) => {
       .json(rest);
     }
   } catch (error) {
-    
+    return res.status(500).json({
+      success:false,
+      message:'Internal Server Error',
+    })
   }
 }

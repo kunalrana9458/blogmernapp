@@ -108,3 +108,17 @@ export const getUsers = async (req,res,next) => {
         
     }
 }
+
+export const deleteUserByAdmin = async(req,res,next) => {
+    if(!req.user.isAdmin){
+        return  next(errorHandler(403,'You are not allowed to Delete the User'))
+    }
+
+    try {
+        await User.findByIdAndDelete(req.params.userId);
+        res.status(200).json({message:"user Deleted Successfully"})
+    } catch (error) {
+        next(error);
+    }
+
+}

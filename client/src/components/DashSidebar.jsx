@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import {Sidebar} from 'flowbite-react'
-import {HiUser,HiArrowRight, HiDocumentText} from 'react-icons/hi'
+import {HiUser,HiArrowRight, HiDocumentText, HiOutlineUserGroup} from 'react-icons/hi'
 import { useLocation } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import {useSelector} from 'react-redux'
@@ -40,6 +40,18 @@ export default function DashProfile() {
               icon={HiDocumentText}
               as='div'>
                Posts
+              </Sidebar.Item>
+            </Link>
+            )
+           }
+           {
+            currentUser.isAdmin && (
+              <Link to='/dashboard?tab=users'>
+              <Sidebar.Item
+              active={tab === 'users'}
+              icon={HiOutlineUserGroup}
+              as='div'>
+               Users
               </Sidebar.Item>
             </Link>
             )

@@ -86,7 +86,8 @@ export default function signin() {
           </div>
           <Button gradientDuoTone='purpleToPink' type='submit'
           className='w-full mt-4'
-          disabled={loading}>
+          disabled={loading}
+          >
             {
               loading ? (<>
               <Spinner size='sm' />

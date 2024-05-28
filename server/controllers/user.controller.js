@@ -1,6 +1,7 @@
 import { errorHandler } from "../utils/error.js";
 import bcryptjs from 'bcryptjs'
 import User from "../models/User.models.js";
+import { response } from "express";
 
 export const test = (req,res) => {
     res.json({message:'API is Working!'}); 
@@ -121,4 +122,14 @@ export const deleteUserByAdmin = async(req,res,next) => {
         next(error);
     }
 
+}
+
+export const getUser = async (req,res,next) => {
+    try {
+        const user = await User.findById(req.params.userId);
+        const {password,...rest} = user._doc;
+        res.status(200).json(rest);
+    } catch (error) {
+        next(error);
+    }
 }

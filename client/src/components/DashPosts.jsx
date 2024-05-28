@@ -12,7 +12,6 @@ export default function DashPosts() {
   const [showMore,setShowMore] = useState(true);
   const [showModal,setShowModal] = useState(false);
   const [postId,setPostId] = useState(null);
-  // console.log(userPosts[0].updatedAt);
   useEffect(() => {
     const fetchPosts = async () => {
       try {
@@ -52,6 +51,8 @@ export default function DashPosts() {
       
     } 
   }
+
+  console.log(userPosts);
 
   const handleShowMore = async() => {
     const startIndex = userPosts.length;

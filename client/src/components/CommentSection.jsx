@@ -63,7 +63,6 @@ export default function CommentSection({ postId }) {
   }, [postId]);
 
   const handleLike = async (commentId) => {
-    console.log("hanlde Like executed");
     try {
 
       if(!currentUser) {
@@ -75,9 +74,7 @@ export default function CommentSection({ postId }) {
         method:'PUT',
       });
       if(res.ok){
-        console.log("Network call executed");
         const data = await res.json();
-        console.log("Converted Data to json");
         setComments(
           comments.map((comment) => 
           comment._id === commentId ? {
@@ -86,7 +83,6 @@ export default function CommentSection({ postId }) {
             numberOfLikes:data.likes.length
           } : comment
         )); 
-        console.log("comments setted");
       }
     } catch (error) {
       console.log(error.message); 

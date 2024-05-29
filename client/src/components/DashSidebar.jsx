@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import {Sidebar} from 'flowbite-react'
-import {HiUser,HiArrowRight, HiDocumentText, HiOutlineUserGroup, HiAnnotation} from 'react-icons/hi'
+import {HiUser,HiArrowRight, HiDocumentText, HiOutlineUserGroup, HiAnnotation, HiChartPie} from 'react-icons/hi'
 import { useLocation } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import {useSelector} from 'react-redux'
@@ -21,7 +21,19 @@ export default function DashProfile() {
   return (
     <Sidebar className='w-full md:'>
         <Sidebar.Items>
-            <Sidebar.ItemGroup> 
+            <Sidebar.ItemGroup>
+            {
+              currentUser && currentUser.isAdmin && (
+                <Link to='/dashboard?tab=dash'>
+                  <Sidebar.Item
+                  active={tab === 'dash' || !tab}
+                  icon={HiChartPie}
+                  as='div' >
+                    Dashboard
+                  </Sidebar.Item>
+                </Link>
+              )
+            }
             <Link to='/dashboard?tab=profile'>
                 <Sidebar.Item 
                 active={tab === 'profile'} 

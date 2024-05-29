@@ -36,13 +36,17 @@ export default function Home() {
           posts && posts.length > 0 && (
             <div>
               <h2 className='text-2xl font-semibold text-center'>Recent Posts</h2>
-              <div className='flex flex-wrap gap-4'>
+              <div className='flex flex-col lg:flex-row flex-wrap gap-4 justify-between'>
                 {
                   posts.map((post) => (
                     <PostCard key={post._id} post={post} />
                   ))
                 }
               </div>
+              <Link to='/search' 
+              className='text-lg text-teal-500 hover:underline'>
+                View All Post
+              </Link>
             </div>
           )
          }

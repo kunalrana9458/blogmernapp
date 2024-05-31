@@ -7,7 +7,6 @@ export default function Home() {
   const [posts,setPosts] = useState([]);
 
   useEffect(() => {
-    console.log("Executed");
     const fetchPosts = async () => {
       const res = await fetch('/api/post/getposts');
       const data = await res.json();

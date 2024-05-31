@@ -52,7 +52,6 @@ export default function DashUsers() {
     } 
   }
   
-  console.log(users);
 
   const handleShowMore = async() => {
     const startIndex = users.length;

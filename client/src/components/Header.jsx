@@ -17,7 +17,6 @@ export default function Header() {
     const path = useLocation().pathname;
     const [searchTerm,setSearchTerm] = useState('');
     const navigate = useNavigate();
-    console.log(searchTerm);
 
     useEffect(() => {
       const urlParams = new URLSearchParams(location.search);

@@ -19,7 +19,6 @@ export default function DashPosts() {
         const data = await res.json();
         if(res.ok){
           setUserPosts(data.post);
-          console.log(data.post);
           if(data.length < 9){
             setShowMore(false);
           }
@@ -52,7 +51,6 @@ export default function DashPosts() {
     } 
   }
 
-  console.log(userPosts);
 
   const handleShowMore = async() => {
     const startIndex = userPosts.length;

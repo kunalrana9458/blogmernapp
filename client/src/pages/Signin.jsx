@@ -19,7 +19,6 @@ export default function signin() {
       [e.target.id] : e.target.value.trim()
   })
   }
-  console.log(formData);
   const submitHandler = async(e) => {
     e.preventDefault();
     if(!formData.email || !formData.password){

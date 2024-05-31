@@ -28,7 +28,7 @@ app.use('/api/post',postRoutes)
 app.use('/api/comment',commentRoutes)
 
 app.get('*',(req,res) => {
-    res.sendFile(path.join(__dirname,'client','dist','index.html'))
+    res.sendFile(path.join(__dirname,'client','dist','index.html'));
 });
 
 app.use(express.static(path.join(__dirname,'/client/dist')))

@@ -6,13 +6,16 @@ import cookieParser from 'cookie-parser'
 import postRoutes from './route/post.route.js'
 import commentRoutes from './route/comment.route.js'
 import path from 'path'
+import dotenv from 'dotenv'
 
+dotenv.config();
+
+const __dirname = path.resolve();
 const app = express();
 
 app.use(express.json());
 app.use(cookieParser());
 
- const __dirname = path.resolve();
 
 const port=3000;
 

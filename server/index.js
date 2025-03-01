@@ -27,7 +27,7 @@ app.use(cors({
 const port = process.env.PORT || 3000;
 
 app.listen(port, () => {
-    console.log(`Server is Running on port ${port}`);
+    console.log(`Server is Running kkk on port ${port}`);
 });
 
 // Database connection
